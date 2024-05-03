@@ -4,21 +4,18 @@ PilhaNumero p1 = new();
 PilhaNumero p2 = new();
 PilhaNumero pAux = new();
 
-p1.Push(new(1));
-p1.Push(new(3));
+p1.Push(new(503));
+p1.Push(new(801));
+p1.Push(new(200));
+p1.Push(new(12));
+p1.Push(new(901));
 
 p2.Push(new(155));
-p2.Push(new(155));
-p2.Push(new(155));
+p2.Push(new(156));
+p2.Push(new(157));
 
-
-p1.VerificarTamanho();
-Console.WriteLine();
-p2.VerificarTamanho();
-
-Console.WriteLine(MaiorPilha());
-
-//int opc = 0, quantidadeLivros = 0;
+p1.GetPares();
+//int opc = 0, quantidadeLivros = 0, opcTransferir;
 //do
 //{
 //    Console.Clear();
@@ -39,8 +36,14 @@ Console.WriteLine(MaiorPilha());
 //          Console.WriteLine(MaiorPilha());
 //            break;
 //        case 2:
+//          Console.WriteLine($"Maior valor: {p1.VerificarMaiorElementoPilha}()");
+//          Console.WriteLine($"Menor valor: {p1.VerificarMaiorElementoPilha()}");
+//          Console.WriteLine($"Média: {(p1.VerificarMaiorElementoPilha() + p1.VerificarMenorElementoPilha()) / 2}");
 //            break;
 //        case 3:
+//          Console.WriteLine(Qual pilha deseja transferir para auxiliar? Opção 1 - para (p1 - pAux) | Opção 2 - para (p2 - pAux))
+//          opcTransferir = int.Parse(Console.ReadLine())
+//          TransferirPilha(opcTransferir)
 //            break;
 //        case 4:
 //            break;
@@ -53,16 +56,47 @@ Console.WriteLine(MaiorPilha());
 
 string MaiorPilha()
 {
-    if(p1.VerificarTamanho() == p2.VerificarTamanho())
+    if (p1.VerificarTamanho() == p2.VerificarTamanho())
     {
         return "O tamanho das pilhas são iguais.";
     }
-    else if(p1.VerificarTamanho() > p2.VerificarTamanho())
+    else if (p1.VerificarTamanho() > p2.VerificarTamanho())
     {
         return "A pilha 1 é maior";
     }
     else
     {
         return "A pilha 2 é maior";
+    }
+}
+
+void TransferirPilha(int opc)
+{
+    Numero aux = new(0);
+    Numero aux2 = new(0);
+    PilhaNumero p_temp = new();
+    switch (opc)
+    {
+        case 1:
+            aux = p1.Pop();
+            p_temp.Push(aux);
+
+            aux2 = p_temp.Pop();
+            pAux.Push(aux);
+
+            pAux.RunOver();
+            break;
+        case 2:
+            aux = p2.Pop();
+            p_temp.Push(aux);
+
+            aux2 = p_temp.Pop();
+            pAux.Push(aux);
+
+            pAux.RunOver();
+            break;
+        default:
+            Console.WriteLine("Opção inválida");
+            break;
     }
 }

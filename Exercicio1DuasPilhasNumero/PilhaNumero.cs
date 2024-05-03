@@ -21,17 +21,13 @@
                 topo = aux;
             }
         }
-        public void Pop()
+        public Numero Pop()
         {
-            if (IsEmpty())
+            if (!IsEmpty())
             {
-                Console.WriteLine("Não pode remover nada de uma pilha vazia");
+                return topo;
             }
-            else
-            {
-                topo = topo.getAnterior();
-
-            }
+            return null;
         }
 
         public void RunOver()
@@ -44,10 +40,54 @@
                     Console.WriteLine(aux.ToString());
                     aux = aux.getAnterior();
                 } while (aux != null);
-                Console.WriteLine("Fim da impressão");
             }
         }
 
+        public void GetImpares()
+        {
+            Numero aux = topo;
+            int quantidade = 0, valoresImpares;
+            if (!IsEmpty())
+            {
+                Console.Write("Os valores ímpares são: ");
+                do
+                {
+                    aux = aux.getAnterior();
+                    if (aux != null)
+                    {
+                        if (aux.getValorNumero() % 2 != 0 && topo != null)
+                        {
+                            valoresImpares = aux.getValorNumero();
+                            quantidade++;
+                            Console.Write(valoresImpares + " ");
+                        }
+                    }
+                } while (aux != null);
+            }
+        }
+
+        public void GetPares()
+        {
+            Numero aux = topo;
+            int quantidade = 0, valoresImpares;
+            if (!IsEmpty())
+            {
+                Console.Write("Os valores pares são: ");
+                do
+                {
+                    aux = aux.getAnterior();
+                    if (aux != null)
+                    {
+                        if (aux.getValorNumero() % 2 == 0 && topo != null)
+                        {
+                            valoresImpares = aux.getValorNumero();
+                            quantidade++;
+                            Console.Write(valoresImpares + " ");
+                        }
+                    }
+                } while (aux != null);
+            }
+        }
         public int VerificarTamanho()
         {
             Numero aux = topo;
@@ -62,21 +102,6 @@
                 return tamanho;
             }
             return 0;
-        }
-
-        public void VerificarMaiorEMenor()
-        {
-            Numero aux = topo;
-            int maior = aux.getValorNumero();
-
-            if (!IsEmpty())
-            {
-                do
-                {
-
-                } while (aux != null);
-            }
-
         }
 
         public int VerificarMenor()
@@ -94,6 +119,58 @@
             }
             return 0;
         }
+
+        public int VerificarMaiorElementoPilha()
+        {
+            Numero aux = topo;
+            int valor = 0, valorAux = 0;
+            if (!IsEmpty())
+            {
+                valor = valorAux = aux.getValorNumero();
+                do
+                {
+                    aux = aux.getAnterior();
+                    if (aux != null)
+                    {
+                        valor = aux.getValorNumero();
+                    }
+
+                    if (valor > valorAux)
+                    {
+                        valorAux = valor;
+                    }
+                } while (aux != null);
+                return valorAux;
+            }
+            return 0;
+        }
+
+        public int VerificarMenorElementoPilha()
+        {
+            Numero aux = topo;
+            int valor = 0, valorAux = 0;
+            if (!IsEmpty())
+            {
+                valor = valorAux = aux.getValorNumero();
+                do
+                {
+                    aux = aux.getAnterior();
+                    if (aux != null)
+                    {
+                        valor = aux.getValorNumero();
+                    }
+
+                    if (valor < valorAux)
+                    {
+                        valorAux = valor;
+                    }
+                } while (aux != null);
+                return valorAux;
+            }
+            return 0;
+        }
+
+
         public bool IsEmpty()
         {
             return this.topo == null;

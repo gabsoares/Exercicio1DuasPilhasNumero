@@ -5,16 +5,16 @@ PilhaNumero p2 = new();
 PilhaNumero pAux = new();
 
 p1.Push(new(503));
-p1.Push(new(801));
+p1.Push(new(802));
 p1.Push(new(200));
 p1.Push(new(12));
-p1.Push(new(901));
+p1.Push(new(90));
 
 p2.Push(new(155));
 p2.Push(new(156));
 p2.Push(new(157));
 
-p1.GetPares();
+
 //int opc = 0, quantidadeLivros = 0, opcTransferir;
 //do
 //{
@@ -46,8 +46,14 @@ p1.GetPares();
 //          TransferirPilha(opcTransferir)
 //            break;
 //        case 4:
+//          p1.GetImpares();
+//          Console.WriteLine();
+//          p2.GetImpares();
 //            break;
 //        case 5:
+//          p1.GetPares();
+//          Console.WriteLine();
+//          p2.GetPares();
 //            break;
 //        default:
 //            break;

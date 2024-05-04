@@ -52,7 +52,6 @@
                 Console.Write("Os valores ímpares são: ");
                 do
                 {
-                    aux = aux.getAnterior();
                     if (aux != null)
                     {
                         if (aux.getValorNumero() % 2 != 0 && topo != null)
@@ -61,6 +60,7 @@
                             quantidade++;
                             Console.Write(valoresImpares + " ");
                         }
+                        aux = aux.getAnterior();
                     }
                 } while (aux != null);
             }
@@ -69,22 +69,22 @@
         public void GetPares()
         {
             Numero aux = topo;
-            int quantidade = 0, valoresImpares;
+            int quantidade = 0, valoresPares = 0;
             if (!IsEmpty())
             {
                 Console.Write("Os valores pares são: ");
                 do
                 {
-                    aux = aux.getAnterior();
                     if (aux != null)
                     {
-                        if (aux.getValorNumero() % 2 == 0 && topo != null)
+                        if (aux.getValorNumero() % 2 == 0)
                         {
-                            valoresImpares = aux.getValorNumero();
                             quantidade++;
-                            Console.Write(valoresImpares + " ");
+                            valoresPares = aux.getValorNumero();
+                            Console.Write(valoresPares + " ");
                         }
                     }
+                    aux = aux.getAnterior();
                 } while (aux != null);
             }
         }
